@@ -5,7 +5,7 @@ pipeline {
       maven 'M2_HOME'
           }
    stages {
-    stage('Git checkout') {
+    stage('Git checkout the code') {
       steps {
          echo 'This is for cloning the gitrepo'
          git branch: 'main', url: 'https://github.com/Desperatesid/insurerepository.git'
