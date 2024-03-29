@@ -30,11 +30,10 @@ pipeline {
             }
    stage('Login to Dockerhub') {
       steps {
-       withCredentials([usernamePassword(credentialsId: 'dockercred', passwordVariable: 'passvar', usernameVariable: 'usrvar')]) {
-        sh 'docker login -u ${usrvar} -p ${passvar}'
-                                                                    }
-                                }
-            }
+      withCredentials([usernamePassword(credentialsId: 'fb70c40e-6328-483b-a779-d7b43563b5a0', passwordVariable: 'passvars', usernameVariable: 'usrvars')]) {
+   sh 'docker login -u ${usrvars} -p ${passvars}'
+         }
+            }}
     stage('Push the Docker image') {
       steps {
         sh 'docker push sidharth1997/insurerepository:1.0'
