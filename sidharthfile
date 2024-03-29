@@ -39,11 +39,7 @@ pipeline {
         sh 'docker push sidharth1997/insurerepository:1.0'
                                 }
             }
-        stage('Push the Docker image') {
-      steps {
-        sh 'docker push sidharth1997/insurerepository:1.0'
-                                }
-            }
+       
 
 
     }
