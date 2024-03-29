@@ -28,6 +28,19 @@ pipeline {
 
                     }
             }
-  
+   stage('Login to Dockerhub') {
+      steps {
+        withCredentials([usernamePassword(credentialsId: 'docker login', passwordVariable: 'paswar', usernameVariable: 'usrvar')])  {
+        sh 'docker login -u ${usrvar} -p ${paswar}'
+                                                                    }
+                                }
+            }
+    stage('Push the Docker image') {
+      steps {
+        sh 'docker push sidharth1997/insurerepository:1.0'
+                                }
+            }
+
+
     }
 }
