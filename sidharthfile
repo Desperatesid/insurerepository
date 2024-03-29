@@ -5,19 +5,25 @@ pipeline {
       maven 'M2_HOME'
           }
    stages {
-    stage('Git _checkout the code') {
+    stage('Git checkout the code') {
       steps {
          echo 'This is for cloning the gitrepo'
          git branch: 'main', url: 'https://github.com/Desperatesid/insurerepository.git'
                           }
             }
-    stage('Create a Package') {
+    stage(' Package') {
       steps {
          echo 'This will create a package using maven'
          sh 'mvn package'
                              }
             }
-stage('Create a Docker image from the Package Insure-Me.jar file') {
+  stage('Publish HTML Reports') {
+      steps {
+          publishHTML([allowMissing: false, alwaysLinkToLastBuild: false, keepAll: false, reportDir: '/var/lib/jenkins/workspace/Insure-Project/target/surefire-reports', reportFiles: 'index.html', reportName: 'HTML Report', reportTitles: '', useWrapperFileDirectly: true])
+                        }
+            
+            }
+stage('Create Docker image from the') {
       steps {
         sh 'docker build -t sidharth1997/insurerepository:2.0 .'
                     }
